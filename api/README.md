@@ -1,16 +1,33 @@
+## Installation
 Install python using conda: [install Anaconda](https://docs.conda.io/projects/conda/en/stable/user-guide/install/index.html)
 create Env:
-`$ conda create --name myenv`
+```bash
+conda create --name myenv
+```
 activate Env:
-`$ conda activate myenv`
+```bash
+conda activate myenv
+```
 install packages:
-`$ pip install Flask`
-`$ pip install flask-cors`
+```bash
+pip install Flask
+```
+```bash
+pip install flask-cors
+```
 
+## Executing
 Run Api project:
-`$ flask --app app run --debug`
+```bash
+flask --app app run --debug
+```
 
+## Testing
 install nodejs (more details in app README) and install postman-cli:
-`$ npm install -g postman-cli`
+```bash
+npm install -g postman-cli
+```
 To initialize the Database
-`$ postman request POST 'http://127.0.0.1:5000/init' \ --body ''`
+```bash
+postman request POST 'http://127.0.0.1:5000/init' \ --body ''
+```
