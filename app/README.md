@@ -1,5 +1,5 @@
 # Install node-js
-[![Install node-js (check installation process and requirements)](https://nodejs.org/pt-br)]
+[Install node-js (check installation process and requirements)](https://nodejs.org/pt-br)
 
 # Welcome to React Router!
 

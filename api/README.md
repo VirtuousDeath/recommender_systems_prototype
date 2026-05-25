@@ -1,5 +1,4 @@
-Install python using conda: [![install Anaconda](https://docs.conda.io/projects/conda/en/stable/user-guide/install/index.html)]
-
+Install python using conda: [install Anaconda](https://docs.conda.io/projects/conda/en/stable/user-guide/install/index.html)
 create Env:
 `$ conda create --name myenv`
 activate Env:
