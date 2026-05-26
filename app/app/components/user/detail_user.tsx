@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
 import type { GetProp, TableProps } from 'antd';
-import { Button, Table } from 'antd';
+import { Table, Typography } from 'antd';
+
 import type { SorterResult } from 'antd/es/table/interface';
 import { EditFilled, PlusCircleFilled, SearchOutlined } from '@ant-design/icons';
 import { Navigate } from 'react-router';
 import { useParams } from "react-router";
+const { Title } = Typography;
 
 type ColumnsType<T extends object = object> = TableProps<T>['columns'];
 
@@ -72,7 +74,7 @@ const columnsRecommendation: ColumnsType<DataRecommendationType> = [
         title: 'Name',
         dataIndex: 'name',
         sorter: true,
-        width: '20%',
+        width: '60%',
     },
     {
         title: 'Product',
@@ -251,6 +253,7 @@ const DetailUserComponent: React.FC = () => {
 
     return (
         <>
+            <Title>Dados Gerais</Title>
             <Table<DataType>
                 columns={columns}
                 rowKey={(record) => record.name}
@@ -259,6 +262,7 @@ const DetailUserComponent: React.FC = () => {
                 loading={loading}
                 onChange={handleTableChange}
             />
+            <Title>Recomendados</Title>
             <Table<DataRecommendationType>
                 columns={columnsRecommendation}
                 rowKey={(record) => record.name}

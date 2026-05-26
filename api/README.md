@@ -10,10 +10,7 @@ conda activate myenv
 ```
 install packages:
 ```bash
-pip install Flask
-```
-```bash
-pip install flask-cors
+pip install Flask flask-cors Flask-RESTx
 ```
 
 ## Executing

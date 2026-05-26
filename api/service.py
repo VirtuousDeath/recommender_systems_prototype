@@ -1,6 +1,8 @@
 import sqlite3
 from helpers import getSimilars
 import json
+from urllib.parse import unquote
+
 def initialize():
     # 1. Connect to a database (or create it)
     connection = sqlite3.connect('recommender_system.db')
@@ -127,7 +129,7 @@ def get_products_data(data):
     cursor = connection.cursor()
     filterSelect = ''
     if "filter" in data:
-        filterData = dict(json.loads(data['filter'])).items()
+        filterData = dict(json.loads(unquote(data['filter']))).items()
         filterSelect = " WHERE " + " AND ".join([f"{key} like '{value}%'" for key, value in filterData])
     # 6. Query and fetch data
     cursor.execute(f'''SELECT nomeProduto, quantidadeLikes FROM tbProduto {filterSelect} order by quantidadeLikes desc limit {data['limit']} offset {int(data['limit'])*(int(data['page']) - 1)}''')

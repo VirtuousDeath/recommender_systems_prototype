@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
 import type { GetProp, TableProps } from 'antd';
-import { Button, FloatButton, Table } from 'antd';
+import { Button, FloatButton, Table, Typography } from 'antd';
 import type { SorterResult } from 'antd/es/table/interface';
 import { EditFilled, PlusCircleFilled, SearchOutlined } from '@ant-design/icons';
 import { Navigate, useNavigate } from 'react-router';
+const { Title } = Typography;
 
 type ColumnsType<T extends object = object> = TableProps<T>['columns'];
 
@@ -26,7 +27,7 @@ const columns: ColumnsType<DataType> = [
         title: 'Name',
         dataIndex: 'name',
         sorter: true,
-        width: '20%',
+        width: '80%',
     },
     {
         title: 'Actions',
@@ -98,7 +99,7 @@ const ListUsersComponent: React.FC = () => {
         setLoading(true);
         let data = await fetch(`http://localhost:5000/users?${params.toString()}`)
         let res = await data.json()
-        setData(Array.isArray(res) ? res.map((elem, idx) => ({ name: elem.nomeCliente, actions: <Button icon={<EditFilled />} type="default" style={{ insetInlineEnd: 94 }} onClick={() => navigate(`/detail_user/${elem.nomeCliente}`)} /> })) : []);
+        setData(Array.isArray(res) ? res.map((elem, idx) => ({ name: elem.nomeCliente, actions: <Button icon={<EditFilled />} type="default" style={{ marginLeft: 100, insetInlineEnd: 94 }} onClick={() => navigate(`/detail_user/${elem.nomeCliente}`)} /> })) : []);
         setLoading(false);
         setTableParams({
             ...tableParams,
@@ -142,6 +143,7 @@ const ListUsersComponent: React.FC = () => {
 
     return (
         <>
+            <Title>Clientes</Title>
             <Table<DataType>
                 columns={columns}
                 rowKey={(record) => record.name}

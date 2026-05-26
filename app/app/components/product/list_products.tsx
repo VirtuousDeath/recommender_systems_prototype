@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
 import type { GetProp, TableProps } from 'antd';
-import { Button, FloatButton, Table } from 'antd';
+import { Button, FloatButton, Table, Typography } from 'antd';
 import type { SorterResult } from 'antd/es/table/interface';
 import { LikeFilled, LikeOutlined, PlusCircleFilled, SearchOutlined } from '@ant-design/icons';
 import { Navigate, useNavigate } from 'react-router';
+const { Title } = Typography;
 
 type ColumnsType<T extends object = object> = TableProps<T>['columns'];
 
@@ -27,15 +28,17 @@ const columns: ColumnsType<DataType> = [
     title: 'Name',
     dataIndex: 'name',
     sorter: true,
-    width: '20%',
+    width: '40%',
   },
   {
     title: 'Value',
     dataIndex: 'value',
+    width: '20%',
   },
   {
     title: 'Like',
     dataIndex: 'like',
+    width: '10%',
   },
 ];
 
@@ -115,7 +118,7 @@ const ListProductsComponent: React.FC = () => {
     setLoading(true);
     let data = await fetch(`http://localhost:5000/products?${params.toString()}`)
     let res = await data.json()
-    setData(Array.isArray(res) ? res.map(elem => ({ name: elem.nomeProduto, value: elem.quantidadeLikes, like: <Button icon={<LikeOutlined />} type="default" style={{ insetInlineEnd: 94 }} onClick={() => generateLike(elem.nomeProduto)} /> })) : []);
+    setData(Array.isArray(res) ? res.map(elem => ({ name: elem.nomeProduto, value: elem.quantidadeLikes, like: <Button icon={<LikeOutlined />} type="default" style={{ marginLeft: 100, insetInlineEnd: 94 }} onClick={() => generateLike(elem.nomeProduto)} /> })) : []);
     setLoading(false);
     setTableParams({
       ...tableParams,
@@ -158,6 +161,7 @@ const ListProductsComponent: React.FC = () => {
 
   return (
     <>
+      <Title>Produtos de Crédito</Title>
       <Table<DataType>
         columns={columns}
         rowKey={(record) => record.name}
