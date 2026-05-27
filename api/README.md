@@ -19,6 +19,9 @@ Run Api project:
 flask --app app run --debug
 ```
 
+## Documentation
+[Swagger endpoints](http://localhost:5000/swagger-ui/)
+
 ## Testing
 install nodejs (more details in app README) and install postman-cli:
 ```bash
